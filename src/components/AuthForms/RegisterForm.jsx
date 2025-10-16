@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../context/authContext/authContext";
 import { useNavigate } from "react-router-dom";
+import style from './Forms.module.css';
 
 export default function RegisterForm({ setNewUser }) {
     const { signUp } = useAuth();
@@ -20,6 +21,7 @@ export default function RegisterForm({ setNewUser }) {
         e.preventDefault();
         try {
             if (formData.password !== formData.password2){
+                alert("Passwords do not match");
                 throw new Error("Password Dont Match");
             }
             await signUp(formData);
@@ -34,7 +36,7 @@ export default function RegisterForm({ setNewUser }) {
   };
 
   return (
-    <div>
+    <div className={style.forms}>
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <label>

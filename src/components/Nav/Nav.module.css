@@ -1,0 +1,14 @@
+.nav{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+nav > a > h3{
+    color: var(--tan);
+    
+}

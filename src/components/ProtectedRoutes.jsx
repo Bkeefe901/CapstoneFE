@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useAuth } from "../context/authContext/authContext";
-import AuthPage from '../pages';
+import AuthPage from '../pages/AuthPage/AuthPage';
 
 
 export default function ProtectedRoutes() {

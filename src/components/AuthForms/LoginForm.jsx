@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../context/authContext/authContext";
 import { useNavigate } from "react-router-dom";
+import style from "./Forms.module.css";
 
 export default function LoginForm({ setNewUser }) {
     const { login } = useAuth();
@@ -19,8 +20,7 @@ export default function LoginForm({ setNewUser }) {
         try {
             await login(formData);
 
-            new ("/dash");
-
+            nav("/dash");
         } catch (err) {
             console.error(err.message);
         }
@@ -31,7 +31,7 @@ export default function LoginForm({ setNewUser }) {
     };
 
     return (
-        <div>
+        <div className={style.forms}>
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
                 <label>

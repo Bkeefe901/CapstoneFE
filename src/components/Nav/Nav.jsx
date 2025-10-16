@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/authContext/authContext";
 import { useUser } from "../../context/userContext/userContext";
+import style from './Nav.module.css';
 
-export default function nav() {
+export default function Nav() {
     const { user } = useUser();
     const { logout } = useAuth();
 
@@ -11,7 +12,7 @@ export default function nav() {
     }
 
     return (
-        <nav>
+        <nav className={style.nav}>
             <Link to={"/"}>
                 <h3>Home</h3>
             </Link>
