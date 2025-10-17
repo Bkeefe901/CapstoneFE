@@ -36,3 +36,4 @@
 - Should create feedingFrequency to userPlant that will be populated from plantId if there is one
 - Should probably change the plant schema feedingFrequency to type: Number and specify that it is in days in fe
 - Might also need to create route to find plant by name, or... i could get all plants saved to state and when search by name in plant search compare by filtering names that have matching characters
+- Make sure/Ask Dylan for help to make sure it logs you out when your token expires and you refresh a auth page.
