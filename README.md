@@ -1,3 +1,12 @@
+# Links
+- [Jira](https://gardentracker.atlassian.net/browse/CGS-8?atlOrigin=eyJpIjoiNzMwYzc5ZDdhZjc4NDdkYjhlZjhmMjhhZThmNDY1MDUiLCJwIjoiaiJ9)
+- [BackEnd Github](https://github.com/Bkeefe901/CapstoneBE)
+
+
+
+
+
+
 # Planning
 
 ## FE Sprint 1
