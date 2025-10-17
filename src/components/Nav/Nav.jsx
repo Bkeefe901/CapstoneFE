@@ -16,22 +16,21 @@ export default function Nav() {
             <Link to={"/"}>
                 <h3>Home</h3>
             </Link>
+            <Link to={"/search"}>
+                <h3>Search Page</h3>
+            </Link>
 
             {user ? (
                 <>
                     <Link to={"/dash"}>
                         <h3>Dashboard</h3>
-                    </Link>
-                    {" "}
-                    <a>
+                    </Link>{" "}
+                    <a href="">
                         <h3 onClick={handleLogout}>Logout</h3>
                     </a>
                 </>
             ) : (
                 <>
-                    <Link to={"/search"}>
-                        <h3>Search Page</h3>
-                    </Link>
                     <Link to={"/auth"}>
                         <h3>Login/SignUp</h3>
                     </Link>
@@ -40,3 +39,34 @@ export default function Nav() {
         </nav>
     );
 }
+
+
+
+// return (
+//     <nav className={style.nav}>
+//         <Link to={"/"}>
+//             <h3>Home</h3>
+//         </Link>
+
+//         {user ? (
+//             <>
+//                 <Link to={"/dash"}>
+//                     <h3>Dashboard</h3>
+//                 </Link>
+//                 {" "}
+//                 <a>
+//                     <h3 onClick={handleLogout}>Logout</h3>
+//                 </a>
+//             </>
+//         ) : (
+//             <>
+//                 <Link to={"/search"}>
+//                     <h3>Search Page</h3>
+//                 </Link>
+//                 <Link to={"/auth"}>
+//                     <h3>Login/SignUp</h3>
+//                 </Link>
+//             </>
+//         )}
+//     </nav>
+// );

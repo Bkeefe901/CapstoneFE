@@ -18,3 +18,15 @@ main {
   height: 100%;
   flex: 1;
 }
+
+
+
+:root {
+  --gold: #d4b582;
+  --blue: #010160;
+  --oliveGreen: #606c38;
+  --armyGreen: #283618;
+  --white: #fefae0;
+  --tan: #dda15e;
+  --darkTan: #bc6c25;
+}

@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useUser } from './context/userContext/userContext';
 import { useAuth } from './context/authContext/authContext';
-import axios from 'axios';
+// import axios from 'axios';
 import apiService from './utilities/apiService.mjs';
 
 
@@ -27,7 +27,7 @@ function App() {
       if (cookies.token) {
         let res = await apiService.getUser(cookies.token);
 
-        setUser(res);
+        setUser(res); //res.data?
       }
     } catch (err) {
       logout();
@@ -36,7 +36,7 @@ function App() {
   }
 
   useEffect(() => {
-    getData
+    getData();
   }, [cookies.token])
 
 

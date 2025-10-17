@@ -1,0 +1,15 @@
+.header{
+    height: 100px;
+    background-color: var(--oliveGreen);
+    font-size: 80px;
+}
+
+.InfoContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 2em 7em;
+}
+
+p{
+    text-align: left;
+}

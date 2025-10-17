@@ -13,7 +13,7 @@ export default function LoginForm({ setNewUser }) {
 
     function handleChange(e) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-    }
+    };
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -24,7 +24,7 @@ export default function LoginForm({ setNewUser }) {
         } catch (err) {
             console.error(err.message);
         }
-    }
+    };
 
     function handleClick() {
         setNewUser(true);

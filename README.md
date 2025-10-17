@@ -3,10 +3,20 @@
 ## FE Sprint 1
 - Create Basic Template and download all known dependencies for fe
     - ✅ Install axios, react-cookie, react-router-dom
-    - ✅Create all page files, component folders, context folders, (utility folder?)
+    - ✅ Create all page files, component folders, context folders, (utility folder?)
+    - ✅ Create basic page layout and component folder/files on what i think i'll need based on wireframe
+    - ✅ Fix front end login bug, authentication error from BE
 
+
+
+## FE Sprint 2
+- Create each page with all elements
+    - ✅ Homepage: with hero img, Announcements, General Resources section
+    - ✅ Plant Search: Search From, Dynamic List results/ cards with info for selected plant
+        - Admin Dash to add new plants to DB
+    - Dashboard: Table element, Form to add new plant
+    
 
 
 ### Notes
-- I think I need <CookieProvider> wrapped around AppProvider in main.jsx
-- I might need an apiService.mjs in the utilities but not sure what that does exactly
+- Create alert to handle if login info is wrong
