@@ -22,10 +22,17 @@
 - Create each page with all elements
     - ✅ Homepage: with hero img, Announcements, General Resources section
     - ✅ Plant Search: Search From, Dynamic List results/ cards with info for selected plant
-        - Admin Dash to add new plants to DB
-    - Dashboard: Table element, Form to add new plant
+    - ✅ Admin Dash to add new plants to DB
+    - ✅ Dashboard: Table element, Form to add new plant
+
+
+## FE Sprint 3
+
     
 
 
 ### Notes
 - Create alert to handle if login info is wrong
+- Should create feedingFrequency to userPlant that will be populated from plantId if there is one
+- Should probably change the plant schema feedingFrequency to type: Number and specify that it is in days in fe
+- Might also need to create route to find plant by name, or... i could get all plants saved to state and when search by name in plant search compare by filtering names that have matching characters

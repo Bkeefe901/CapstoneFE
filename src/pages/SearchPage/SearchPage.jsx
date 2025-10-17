@@ -59,7 +59,7 @@ export default function SearchPage() {
 
 
 
-    return (
+    return ( // use ternary: user.isAdmin ? <PlantSearch /> : <AdminForm />
         <>
             <div className={style.mainContainer}>
                 <div className={style.searchForm}>
@@ -80,4 +80,46 @@ export default function SearchPage() {
             </div>
         </>
     );
+}
+
+
+
+// Components ---------------------------------------------------------
+
+// AdminForm to add new plants to DB
+function AdminForm() {
+
+    // Would like the sulight requirements to be drop down menu with options
+    return (
+        <div>
+            <form>
+                    <label>
+                        Name of Plant
+                        <input type="text" />
+                    </label>
+                    <label>
+                        Feeding Frequency In Days
+                        <input type="number" />
+                    </label>
+                    <label>Sunlight Requirments</label>
+                    <select name="" id="">
+                        <option value="">Full</option>
+                        <option value="">Partial</option>
+                        <option value="">Shade</option>
+                    </select>
+                    <label>
+                        Days to Harvest
+                        <input type="number" />
+                    </label>
+                     <label>
+                        Description
+                        <input type="text" />
+                    </label>
+                    <label>
+                        Image URL
+                        <input type="text" />
+                    </label>
+                </form>
+        </div>
+    )
 }

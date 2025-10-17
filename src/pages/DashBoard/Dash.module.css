@@ -1,0 +1,28 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.table{
+    /* margin: 25% auto; */
+    margin-top: 25%;
+    margin-bottom: 12px;
+    width: 70%;
+    background-color: var(--tableR);
+}
+
+th{
+    background-color: var(--tableR); 
+    padding: 5px;
+}
+
+ tr:nth-child(odd) {
+    background-color: var(--table); 
+}
+
+
+tr:nth-child(even) {
+    background-color: var(--tableR); 
+}
