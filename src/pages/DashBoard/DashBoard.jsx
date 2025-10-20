@@ -8,67 +8,46 @@ import axios from 'axios';
 
 export default function Dashboard() {
     const [plantData, setPlantData] = useState(null);
+    const [addNew, setAddNew] = useState(false);
+    const [table, setTable] = useState(false); //Toggle for dependency to useEffect
     const { user } = useUser();
     const { cookies } = useAuth();
-    const connStr = `http://localhost:3000/api`
+    const connStr = `http://localhost:3000/api`;
 
-    let testData = [
-        {
-            "name": "purple carrot",
-            "datePlanted": "2025-03-15T00:00:00.000+00:00",
-            "lastFed": "2025-04-10T00:00:00.000+00:00",
-            "lastWatered": "2025-04-01T00:00:00.000+00:00"
-        },
-        {
-            "name": "purple carrot",
-            "datePlanted": "2025-03-15T00:00:00.000+00:00",
-            "lastFed": "2025-04-10T00:00:00.000+00:00",
-            "lastWatered": "2025-04-01T00:00:00.000+00:00"
-        },
-        {
-            "name": "purple carrot",
-            "datePlanted": "2025-03-15T00:00:00.000+00:00",
-            "lastFed": "2025-04-10T00:00:00.000+00:00",
-            "lastWatered": "2025-04-01T00:00:00.000+00:00"
-        }
-    ];
 
-    // console.log(user); // returns this which is a state from useUser context
 
-    // console.log(user._id); // will not recognize _id even though i see it from console logging user state above
-
-    let token = cookies.token;
-
-    console.log(token);
-
-    let options = {
-        headers: { "x-auth-token": token },
-    };
 
 
     useEffect(() => {
-
+        let isMounted = true;
+        let controller = new AbortController();
+        let token = cookies.token;
+        let options = { headers: { "x-auth-token": token } };
         if (user) {
             async function getPlants() {
-
                 try {
-                    let res = await axios.get(`${connStr}/userplant/user/${user._id}`, options);
-
-                    setPlantData(res.data);
+                    let res = await axios.get(`${connStr}/userplant/user/${user._id}`, { ...options, signal: controller.signal });
+                    if (isMounted) {
+                        setPlantData(res.data);
+                    }
 
                 } catch (err) {
                     console.error(`❌ Error fetching userPlants: ${err.message}`);
                 }
             }
             getPlants();
-        }
+        };
 
+        return () => {
+            isMounted = false;
+            controller.abort();
+        };
 
-    }, [user])
+    }, [user, table]);
 
 
     function loaded() {
-        return <PlantTable plantData={plantData}/>
+        return <PlantTable plantData={plantData} setAddNew={setAddNew} addNew={addNew} setTable={setTable} />
     }
 
     function loading() {
@@ -76,7 +55,7 @@ export default function Dashboard() {
     }
 
 
-    
+
 
 
 
@@ -85,7 +64,7 @@ export default function Dashboard() {
 
 // Components ---------------------------
 
-function PlantTable({ plantData }){
+function PlantTable({ plantData, setAddNew, addNew, setTable }) {
 
 
 
@@ -101,7 +80,7 @@ function PlantTable({ plantData }){
         let fed = new Date(plant.lastFed);
         let feedingDiff = now - fed;
         let sinceFed = Math.round(feedingDiff / (1000 * 60 * 60 * 24));
-        
+
         return (
             <>
                 <tr key={i}>
@@ -133,12 +112,13 @@ function PlantTable({ plantData }){
                     {tableData}
                 </tbody>
             </table>
-            <button>Add New Plant</button>
+            {addNew ? <PlantInput setAddNew={setAddNew} setTable={setTable} /> : <button onClick={() => { setAddNew((prev) => !prev) }}>Add New Plant</button>}
         </div>
     )
 }
 
 function PlantCard() {
+
 
     return (
         <div>
@@ -149,28 +129,88 @@ function PlantCard() {
     )
 }
 
-function PlantInput() {
+function PlantInput({ setAddNew, setTable }) {
+    const { user } = useUser();
+    const { cookies } = useAuth();
+    let token = cookies.token;
+    let options = { headers: { "x-auth-token": token } };
+    const [newPlant, setNewPlant] = useState({
+        user: user._id,
+        name: "",
+        season: "winter",
+        datePlanted: new Date(),
+        lastWatered: new Date(),
+        lastFed: new Date(),
+    });
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        try {
+            await axios.post(`http://localhost:3000/api/userplant`, newPlant, options);
+            setAddNew((prev) => !prev);
+            setTable((prev) => !prev);
+
+        } catch (err) {
+            console.error(err.message);
+        }
+    }
+
+
+    function handleChange(e) {
+        setNewPlant({ ...newPlant, [e.target.name]: e.target.value });
+    }
+
+
 
     return (
-        <div>
-            <form>
+        <div className={style.plantInput} >
+            <form onSubmit={handleSubmit}>
                 <label>
                     Name of Plant
-                    <input type="text" />
+                    <input
+                        type="text"
+                        name="name"
+                        value={newPlant.name}
+                        onChange={handleChange}
+                    />
                 </label>
                 <label>
                     Date Planted
-                    <input type="date" />
+                    <input
+                        type="date"
+                        name='datePlanted'
+                        value={newPlant.datePlanted}
+                        onChange={handleChange}
+                    />
                 </label>
                 <label>
                     Last Fertalized
-                    <input type="date" />
+                    <input
+                        type="date"
+                        name='lastFed'
+                        value={newPlant.lastFed}
+                        onChange={handleChange}
+                    />
                 </label>
                 <label>
                     Last Watered
-                    <input type="date" />
+                    <input
+                        type="date"
+                        name='lastWatered'
+                        value={newPlant.lastWatered}
+                        onChange={handleChange}
+                    />
                 </label>
+                <label>For which season?</label>
+                <select name="season" id=""  onChange={handleChange}>
+                    <option value="winter">Winter</option>
+                    <option value="spring">Spring</option>
+                    <option value="summer">Summer</option>
+                    <option value="fall">Fall</option>
+                </select>
+                <input type="submit" value="Add to Garden" />
             </form>
         </div>
     )
 }
+

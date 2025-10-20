@@ -7,7 +7,7 @@
 
 .table{
     /* margin: 25% auto; */
-    margin-top: 25%;
+    margin-top: 15%;
     margin-bottom: 12px;
     width: 70%;
     background-color: var(--tableR);
@@ -25,4 +25,10 @@ th{
 
 tr:nth-child(even) {
     background-color: var(--tableR); 
+}
+
+
+.plantInput{
+    background-color: var(--gold);
+    padding: 10px;
 }
