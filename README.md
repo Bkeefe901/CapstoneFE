@@ -39,3 +39,4 @@
 - Make sure/Ask Dylan for help to make sure it logs you out when your token expires and you refresh a auth page.
 - If I get to the point of matching plants to userPlants I should do it from the search page on the cards, ie there should be a button on each card that says 'add to garden';
 - Figure out how to set default for PlantInput date to date.now when submitting form, if they werent changed
+- Test to see if adding multiple new userPlants, and not always choosing the date options if the newer plants added inherit old options (because stored in state from previous selections)

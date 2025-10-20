@@ -10,6 +10,7 @@ export default function Dashboard() {
     const [plantData, setPlantData] = useState(null);
     const [addNew, setAddNew] = useState(false);
     const [table, setTable] = useState(false); //Toggle for dependency to useEffect
+    const [edit, setEdit] = useState({ type: "", id: "", name: "" });
     const { user } = useUser();
     const { cookies } = useAuth();
     const connStr = `http://localhost:3000/api`;
@@ -47,7 +48,7 @@ export default function Dashboard() {
 
 
     function loaded() {
-        return <PlantTable plantData={plantData} setAddNew={setAddNew} addNew={addNew} setTable={setTable} />
+        return <PlantTable plantData={plantData} setAddNew={setAddNew} addNew={addNew} setTable={setTable} edit={edit} setEdit={setEdit} />
     }
 
     function loading() {
@@ -64,7 +65,7 @@ export default function Dashboard() {
 
 // Components ---------------------------
 
-function PlantTable({ plantData, setAddNew, addNew, setTable }) {
+function PlantTable({ plantData, setAddNew, addNew, setTable, edit, setEdit }) {
 
 
 
@@ -75,11 +76,15 @@ function PlantTable({ plantData, setAddNew, addNew, setTable }) {
         let ageDiff = now - planted;    // Finds diff between dates (datePlanted and now)
         let age = Math.round(ageDiff / (1000 * 60 * 60 * 24));  // rounds and converts to days
         let watered = new Date(plant.lastWatered);
-        let waterDifference = now - watered; 
+        let waterDifference = now - watered;
         let sinceWater = Math.round(waterDifference / (1000 * 60 * 60 * 24)); // same for watered
         let fed = new Date(plant.lastFed);
         let feedingDiff = now - fed;
         let sinceFed = Math.round(feedingDiff / (1000 * 60 * 60 * 24)); // same for fed
+
+        function handleClick() {
+            setEdit({ ...edit, type: "edit", ...plant });
+        }
 
         return (
             <>
@@ -88,7 +93,11 @@ function PlantTable({ plantData, setAddNew, addNew, setTable }) {
                     <td>{age} days</td>
                     <td>{sinceFed} days ago</td>
                     <td>{sinceWater} days ago</td>
-                    <td><button>Details</button></td>
+                    <td>
+                        <button
+                            onClick={handleClick}
+                        >Edit</button>
+                    </td>
                 </tr>
             </>
         );
@@ -98,20 +107,23 @@ function PlantTable({ plantData, setAddNew, addNew, setTable }) {
 
     return (
         <div className={style.mainContainer}>
-            <table className={style.table}>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Last Fertalized</th>
-                        <th>Last Watered</th>
-                    </tr>
+            <div className={style.secondContainer}>
+                <table className={style.table}>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Last Fertalized</th>
+                            <th>Last Watered</th>
+                        </tr>
 
-                </thead>
-                <tbody>
-                    {tableData}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {tableData}
+                    </tbody>
+                </table>
+                {edit.type == 'edit' ? <PlantCard edit={edit} setEdit={setEdit} setTable={setTable} /> : <p></p>}
+            </div>
             {addNew ? <PlantInput setAddNew={setAddNew} setTable={setTable} /> : <button onClick={() => { setAddNew((prev) => !prev) }}>Add New Plant</button>}
         </div>
     )
@@ -123,15 +135,82 @@ function PlantTable({ plantData, setAddNew, addNew, setTable }) {
 
 
 
-function PlantCard() {
+function PlantCard({ edit, setEdit, setTable }) {
+    const { cookies } = useAuth();
+    let token = cookies.token;
+    let options = { headers: { "x-auth-token": token } };
+    const watered = new Date(edit.lastWatered).toISOString().split("T")[0];
+    const fed = new Date(edit.lastFed).toISOString().split("T")[0];
+
+
+
+    function handleClick(e) {
+        e.preventDefault();
+        setEdit({ ...edit, [e.target.name]: new Date() })
+
+    }
+
+    function handleChange(e) {
+        setEdit({ ...edit, [e.target.name]: e.target.value });
+    }
+
+    function handleClose() {
+        setEdit({ ...edit, type: "" });
+    }
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        try {
+            let updatedPlant = {
+                lastWatered: edit.lastWatered,
+                lastFed: edit.lastFed,
+            }
+            await axios.put(`http://localhost:3000/api/userplant/${edit._id}`, updatedPlant, options);
+
+            setTable((prev) => !prev);
+            setEdit({ type: "" });
+
+        } catch (err) {
+            console.error(err.message);
+        }
+    }
+
+
+    // console.log(typeof watered);
 
 
     return (
-        <div>
-            <ul>
-                <li></li>
-            </ul>
-        </div>
+        <>
+            <form style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'var(--table)', marginTop: '15%' }} onSubmit={handleSubmit}>
+                <button
+                    type='button'
+                    onClick={handleClose}
+                    style={{ marginRight: '90%' }}
+                >
+                    X
+                </button>
+                <h1>{edit.name}</h1>
+                <label>
+                    Last Watered
+                    <input
+                        type="date"
+                        name='lastWatered'
+                        value={watered}
+                        onChange={handleChange} />
+                </label>
+                <button onClick={handleClick} name='lastWatered' >Watered Today</button>
+                <label>
+                    Last Fertalized
+                    <input
+                        type="date"
+                        name="lastFed"
+                        value={fed}
+                        onChange={handleChange} />
+                </label>
+                <button onClick={handleClick} name='lastFed'>Fertalized Today</button>
+                <input type="submit" value="Save" onSubmit={handleSubmit} />
+            </form>
+        </>
     )
 }
 
@@ -173,7 +252,7 @@ function PlantInput({ setAddNew, setTable }) {
         setNewPlant({ ...newPlant, [e.target.name]: e.target.value });
     }
 
-    function handleClick(){
+    function handleClick() {
         setAddNew(false);
     }
 
@@ -184,7 +263,7 @@ function PlantInput({ setAddNew, setTable }) {
             <button
                 type='button'
                 onClick={handleClick}
-                style={{marginRight: '90%'}}
+                style={{ marginRight: '90%' }}
             >
                 X
             </button>
@@ -226,7 +305,7 @@ function PlantInput({ setAddNew, setTable }) {
                     />
                 </label>
                 <label>For which season?</label>
-                <select name="season" id=""  onChange={handleChange}>
+                <select name="season" id="" onChange={handleChange}>
                     <option value="winter">Winter</option>
                     <option value="spring">Spring</option>
                     <option value="summer">Summer</option>
