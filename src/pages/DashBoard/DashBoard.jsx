@@ -66,7 +66,7 @@ export default function Dashboard() {
 // Components ---------------------------
 
 function PlantTable({ plantData, setAddNew, addNew, setTable, edit, setEdit }) {
-
+    const { user } = useUser();
 
 
 
@@ -107,6 +107,7 @@ function PlantTable({ plantData, setAddNew, addNew, setTable, edit, setEdit }) {
 
     return (
         <div className={style.mainContainer}>
+            <h1 style={{marginTop: '30px', marginBottom: '0'}}>Welcome to Your Dashboard {user.userName}</h1>
             <div className={style.secondContainer}>
                 <table className={style.table}>
                     <thead>
