@@ -197,7 +197,7 @@ function PlantCard({ edit, setEdit, setTable }) {
 
     return (
         <>
-            <form style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'var(--table)', marginTop: '15%' }} onSubmit={handleSubmit}>
+            <form style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'var(--table)', marginTop: '15%', padding: '10px' }} onSubmit={handleSubmit}>
                 <button
                     type='button'
                     onClick={handleClose}
