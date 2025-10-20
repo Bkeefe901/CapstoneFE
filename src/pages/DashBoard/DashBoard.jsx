@@ -72,14 +72,14 @@ function PlantTable({ plantData, setAddNew, addNew, setTable }) {
     let tableData = plantData.map((plant, i) => {
         let now = new Date();
         let planted = new Date(plant.datePlanted);
-        let ageDiff = now - planted;
-        let age = Math.round(ageDiff / (1000 * 60 * 60 * 24));
+        let ageDiff = now - planted;    // Finds diff between dates (datePlanted and now)
+        let age = Math.round(ageDiff / (1000 * 60 * 60 * 24));  // rounds and converts to days
         let watered = new Date(plant.lastWatered);
-        let waterDifference = now - watered;
-        let sinceWater = Math.round(waterDifference / (1000 * 60 * 60 * 24));
+        let waterDifference = now - watered; 
+        let sinceWater = Math.round(waterDifference / (1000 * 60 * 60 * 24)); // same for watered
         let fed = new Date(plant.lastFed);
         let feedingDiff = now - fed;
-        let sinceFed = Math.round(feedingDiff / (1000 * 60 * 60 * 24));
+        let sinceFed = Math.round(feedingDiff / (1000 * 60 * 60 * 24)); // same for fed
 
         return (
             <>
@@ -117,6 +117,12 @@ function PlantTable({ plantData, setAddNew, addNew, setTable }) {
     )
 }
 
+
+
+
+
+
+
 function PlantCard() {
 
 
@@ -128,6 +134,13 @@ function PlantCard() {
         </div>
     )
 }
+
+
+
+
+
+
+
 
 function PlantInput({ setAddNew, setTable }) {
     const { user } = useUser();
@@ -160,10 +173,21 @@ function PlantInput({ setAddNew, setTable }) {
         setNewPlant({ ...newPlant, [e.target.name]: e.target.value });
     }
 
+    function handleClick(){
+        setAddNew(false);
+    }
+
 
 
     return (
         <div className={style.plantInput} >
+            <button
+                type='button'
+                onClick={handleClick}
+                style={{marginRight: '90%'}}
+            >
+                X
+            </button>
             <form onSubmit={handleSubmit}>
                 <label>
                     Name of Plant
