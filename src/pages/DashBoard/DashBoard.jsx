@@ -150,6 +150,23 @@ function PlantCard({ edit, setEdit, setTable }) {
 
     }
 
+    async function handleDelete(e) {
+        e.preventDefault();
+        const userConfirmed = confirm("Are you sure you want to delete this plant from your garden?");
+        if (userConfirmed) {
+            try {
+                await axios.delete(`http://localhost:3000/api/userplant/${edit._id}`, options);
+                setTable((prev) => !prev);
+                setEdit({ type: "" });
+
+            } catch (err) {
+                console.error(err.message);
+            }
+        }
+
+
+    }
+
     function handleChange(e) {
         setEdit({ ...edit, [e.target.name]: e.target.value });
     }
@@ -166,7 +183,6 @@ function PlantCard({ edit, setEdit, setTable }) {
                 lastFed: edit.lastFed,
             }
             await axios.put(`http://localhost:3000/api/userplant/${edit._id}`, updatedPlant, options);
-
             setTable((prev) => !prev);
             setEdit({ type: "" });
 
@@ -189,7 +205,12 @@ function PlantCard({ edit, setEdit, setTable }) {
                 >
                     X
                 </button>
-                <h1>{edit.name}</h1>
+                <h1 style={{ marginBottom: '2px' }}>{edit.name}</h1>
+                <button
+                    style={{ marginBottom: '18px', backgroundColor: 'red' }}
+                    onClick={handleDelete}
+                >
+                    Delete Plant</button>
                 <label>
                     Last Watered
                     <input
@@ -209,6 +230,7 @@ function PlantCard({ edit, setEdit, setTable }) {
                 </label>
                 <button onClick={handleClick} name='lastFed'>Fertalized Today</button>
                 <input type="submit" value="Save" onSubmit={handleSubmit} />
+
             </form>
         </>
     )
