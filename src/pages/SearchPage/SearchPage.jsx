@@ -107,7 +107,6 @@ function PlantList({ plants }) {
                     <input type="submit" value="Search" />
                 </form>
             </div>
-            {/* {plantInfo} */}
             <PlantInfo plants={plants} />
         </div>
 
