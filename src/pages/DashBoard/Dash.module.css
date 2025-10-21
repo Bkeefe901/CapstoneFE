@@ -35,7 +35,7 @@ tr:nth-child(even) {
 
 
 .plantInput{
-    background-color: var(--gold);
+    background-color: var(--form);
     padding: 30px;
     position: fixed;
     top: 50%;

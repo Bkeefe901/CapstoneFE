@@ -24,13 +24,20 @@ form > label{
 .searchForm {
   max-width: 600px;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 2em;
   border-radius: 10px;
   background-color: var(--form);
   color: var(--text1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
+}
+
+
+.adminDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3em;
 }
 
 
@@ -45,10 +52,15 @@ form {
 
 
 .adminForm{
-    width: 25%;
+    width: 35%;
+    padding: 2em;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--text1);
+    background-color: var(--form);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 
 label {

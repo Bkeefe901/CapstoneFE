@@ -46,10 +46,9 @@ export default function SearchPage() {
     function loaded() {
         return (
             <>
-                {user?.isAdmin ? <AdminForm setNewList={setNewList} /> : <SearchForm plants={plants} />} 
-                <div className={style.plantList}>
-                    <PlantInfo plants={plants} />
-                </div>
+                {user?.isAdmin ? <AdminForm plants={plants} setPlants={setPlants} setNewList={setNewList} /> : <SearchForm plants={plants} setPlants={setPlants} setNewList={setNewList} />}
+                <PlantInfo plants={plants} />
+
             </>
         )
     }
@@ -67,6 +66,9 @@ export default function SearchPage() {
 
 
 function PlantInfo({ plants }) {
+
+
+    
     let plantInfo = plants.map((ob, i) => {
         return (
             <div key={i} className={style.plantCard}>
@@ -74,14 +76,16 @@ function PlantInfo({ plants }) {
                 <p>{ob.description}</p>
                 <p><b>Sun light Requirements:</b> {ob.sunlightReqs}</p>
                 <p><b>Days to Harvest:</b> {ob.daysToHarvest}</p>
-                <img style={{ width: '40%' }} src={ob.imageURL} alt={ob.name} />
+                <img style={{ width: '40%' }} src={ob.imageURL || null} alt={ob.name} />
             </div>
         )
     });
 
     return (
         <>
-            {plantInfo}
+            <div className={style.plantList}>
+                {plantInfo}
+            </div>
         </>
     )
 
@@ -89,14 +93,26 @@ function PlantInfo({ plants }) {
 
 
 // Search Form for nonAdmin users
-function SearchForm({ plants }) {
-    
+function SearchForm({ plants, setPlants, setNewList }) {
+    const [search, setSearch] = useState({
+        name: ""
+    });
 
+
+    function handleChange(e) {
+        setSearch({...search, [e.target.name]: e.target.value.toLowerCase()});
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
+        let updatedPlants = plants.filter((plant) => plant.name == search.name);
+        setPlants(updatedPlants);
     }
 
+    function handleClick(e) {
+        setNewList((prev) => !prev);
+        setSearch({ name: "" })
+    }
 
     return (
         <div className={style.mainContainer}>
@@ -105,11 +121,24 @@ function SearchForm({ plants }) {
                 <form onSubmit={handleSubmit} >
                     <label>
                         Plant Name
-                        <input type="text" placeholder='Ex: tomato' />
+                        <input 
+                            type="text" 
+                            name="name"
+                            value={search.name}
+                            placeholder='Ex: tomato' 
+                            onChange={handleChange}
+                            
+                            />
                     </label>
-                    <input type="submit" value="Search" />
+                    <input 
+                        type="submit" 
+                        value="Search" 
+                        onSubmit={handleSubmit}
+                        
+                        />
                 </form>
             </div>
+            <button onClick={handleClick}>Clear Search Results</button>
         </div>
     )
 }
@@ -132,11 +161,12 @@ function SearchForm({ plants }) {
 
 
 // AdminForm to add new plants to DB
-function AdminForm({ setNewList }) {
+function AdminForm({ setNewList, plants, setPlants }) {
     const { user } = useUser();
     const { cookies } = useAuth();
     let token = cookies.token;
     let options = { headers: { "x-auth-token": token } };
+    const [toggle, setToggle] = useState(false);
     const [newPlant, setNewPlant] = useState({
         id: user._id,
         name: "",
@@ -161,83 +191,95 @@ function AdminForm({ setNewList }) {
     }
 
     function handleChange(e) {
-        setNewPlant({...newPlant, [e.target.name]: e.target.value});
+        setNewPlant({ ...newPlant, [e.target.name]: e.target.value });
+    }
+
+    function handleClick(e) {
+        setToggle((prev) => !prev);
     }
 
 
 
 
     return (
-    
-            <div className={style.searchForm}>
-                <form className={style.adminForm} onSubmit={handleSubmit}>
-                    <h1>Admin Plant Form</h1>
-                    <label>
-                        Name of Plant
-                        <input 
-                            type="text" 
-                            name='name'
-                            value={newPlant.name}
-                            onChange={handleChange}
-                            />
-                    </label>
-                    <label>
-                        Feeding Frequency In Days
-                        <input 
-                            type="number" 
-                            name='feedingFrequency'
-                            value={newPlant.feedingFrequency}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    <label>Sunlight Requirments</label>
-                    <select 
-                        name="sunlightReqs"
-                        value={newPlant.sunlightReqs} 
+
+        <div className={style.adminDiv}>
+            <button 
+                style={{marginBottom: '10px'}}
+                onClick={handleClick}
+            >
+            Admin Form Toggle
+            </button>
+            { toggle ?
+            <SearchForm plants={plants} setPlants={setPlants} setNewList={setNewList} /> :
+            <form className={style.adminForm} onSubmit={handleSubmit}>
+                <h1>Admin Plant Form</h1>
+                <label>
+                    Name of Plant
+                    <input
+                        type="text"
+                        name='name'
+                        value={newPlant.name}
                         onChange={handleChange}
-                        style={{width: '130px'}}
-                        >
-                        <option value="">Full</option>
-                        <option value="">Partial</option>
-                        <option value="">Shade</option>
-                    </select>
-                    <label>
-                        Days to Harvest
-                        <input 
-                            type="number" 
-                            name='daysToHarvest'
-                            value={newPlant.daysToHarvest}
-                            onChange={handleChange}
-                            />
-                    </label>
-                    <label>
-                        Image URL
-                        <input 
-                            type="text"
-                            name='imageURL'
-                            value={newPlant.imageURL} 
-                            onChange={handleChange}
-                            />
-                    </label>
-                    <label>
-                        Description
-                        <textarea 
-                        style={{height: '65px'}}
-                        type="text" 
+                    />
+                </label>
+                <label>
+                    Feeding Frequency In Days
+                    <input
+                        type="number"
+                        name='feedingFrequency'
+                        value={newPlant.feedingFrequency}
+                        onChange={handleChange}
+                    />
+                </label>
+                <label>Sunlight Requirments</label>
+                <select
+                    name="sunlightReqs"
+                    value={newPlant.sunlightReqs}
+                    onChange={handleChange}
+                    style={{ width: '130px' }}
+                >
+                    <option value="">Full</option>
+                    <option value="">Partial</option>
+                    <option value="">Shade</option>
+                </select>
+                <label>
+                    Days to Harvest
+                    <input
+                        type="number"
+                        name='daysToHarvest'
+                        value={newPlant.daysToHarvest}
+                        onChange={handleChange}
+                    />
+                </label>
+                <label>
+                    Image URL
+                    <input
+                        type="text"
+                        name='imageURL'
+                        value={newPlant.imageURL}
+                        onChange={handleChange}
+                    />
+                </label>
+                <label>
+                    Description
+                    <textarea
+                        style={{ height: '65px' }}
+                        type="text"
                         name='description'
                         rows='8'
                         cols='40'
                         value={newPlant.description}
                         onChange={handleChange}
-                        ></textarea>
-                    </label>
-                    <input 
-                        type="submit" 
-                        style={{width: '130px'}}        
-                        />
-                </form>
-            </div>
-        
+                    ></textarea>
+                </label>
+                <input
+                    type="submit"
+                    style={{ width: '130px' }}
+                />
+            </form>  }
+        </div> 
+
     )
 }
 
