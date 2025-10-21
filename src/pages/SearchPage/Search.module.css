@@ -29,7 +29,11 @@ form > label{
   background-color: var(--form);
   color: var(--text1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
 }
+
+
 
 
 form {
@@ -37,6 +41,14 @@ form {
     flex-direction: column;
     gap: 1rem;
     width: 200px;
+}
+
+
+.adminForm{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 label {
