@@ -32,14 +32,3 @@ th{
 tr:nth-child(even) {
     background-color: var(--tableR); 
 }
-
-
-.plantInput{
-    background-color: var(--form);
-    padding: 30px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-}

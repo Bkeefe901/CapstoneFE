@@ -1,0 +1,17 @@
+.plantCard{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--oliveGreen);
+    margin: 3px;
+    width: 50%;
+    padding: 8px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.plantList{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

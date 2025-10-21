@@ -1,0 +1,17 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.searchForm {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2em;
+  border-radius: 10px;
+  background-color: var(--form);
+  color: var(--text1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}

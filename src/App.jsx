@@ -3,10 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useUser } from './context/userContext/userContext';
 import { useAuth } from './context/authContext/authContext';
-// import axios from 'axios';
 import apiService from './utilities/apiService.mjs';
-
-
 
 // Pages
 import AuthPage from './pages/AuthPage/AuthPage';
@@ -18,6 +15,7 @@ import SearchPage from './pages/SearchPage/SearchPage';
 import ProtectedRoutes from './components/ProtectedRoutes';
 import Nav from './components/Nav/Nav';
 
+
 function App() {
   const { cookies, logout } = useAuth();
   const { setUser } = useUser();
@@ -27,7 +25,7 @@ function App() {
       if (cookies.token) {
         let res = await apiService.getUser(cookies.token);
 
-        setUser(res); //res.data?
+        setUser(res); 
       }
     } catch (err) {
       logout();
