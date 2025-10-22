@@ -9,17 +9,20 @@ export default function SearchForm({ plants, setPlants, setNewList }) {
     });
 
 
+
     function handleChange(e) {
         setSearch({...search, [e.target.name]: e.target.value.toLowerCase()});
     }
 
+    // handler to filter plant list for a name that matches the search
     function handleSubmit(e) {
         e.preventDefault();
         let updatedPlants = plants.filter((plant) => plant.name == search.name);
         setPlants(updatedPlants);
     }
 
-    function handleClick(e) {
+    // handler to reset plant list and clear search input
+    function handleClick() {
         setNewList((prev) => !prev);
         setSearch({ name: "" })
     }

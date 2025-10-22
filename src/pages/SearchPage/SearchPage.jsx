@@ -15,9 +15,10 @@ export default function SearchPage() {
     const [newList, setNewList] = useState(false);
     const { user } = useUser();
 
+    // hook to auto populate the search page with plant data
     useEffect(() => {
         let isMounted = true;
-        let controller = new AbortController();
+        let controller = new AbortController(); // controller for cleanup function incase component unmounts
 
         async function getPlants() {
             try {
@@ -49,8 +50,9 @@ export default function SearchPage() {
     function loaded() {
         return (
             <>
+                {/* ternary to show AdminForm if admin or SearchForm if not */}
                 {user?.isAdmin ? <AdminForm plants={plants} setPlants={setPlants} setNewList={setNewList} /> : <SearchForm plants={plants} setPlants={setPlants} setNewList={setNewList} />}
-                <PlantInfo plants={plants} />
+                <PlantInfo plants={plants} setNewList={setNewList} />
 
             </>
         )

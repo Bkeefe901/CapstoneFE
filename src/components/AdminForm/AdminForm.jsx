@@ -13,7 +13,7 @@ export default function AdminForm({ setNewList, plants, setPlants }) {
     const { cookies } = useAuth();
     let token = cookies.token;
     let options = { headers: { "x-auth-token": token } };
-    const [toggle, setToggle] = useState(false);
+    const [toggle, setToggle] = useState(false); // Toggle for switching between SearchForm and AdminForm
     const [newPlant, setNewPlant] = useState({
         id: user._id,
         name: "",
@@ -25,9 +25,11 @@ export default function AdminForm({ setNewList, plants, setPlants }) {
     });
 
 
+    // handler for creating a new plant in the db
     async function handleSubmit(e) {
         e.preventDefault();
         try {
+            console.log(options);
             await axios.post(`http://localhost:3000/api/plant`, newPlant, options);
             alert(`✅ Plant successfully added to the database!`);
             setNewList((prev) => !prev);
@@ -41,7 +43,7 @@ export default function AdminForm({ setNewList, plants, setPlants }) {
         setNewPlant({ ...newPlant, [e.target.name]: e.target.value });
     }
 
-    function handleClick(e) {
+    function handleClick() {
         setToggle((prev) => !prev);
     }
 

@@ -21,12 +21,14 @@ export default function PlantCard({ edit, setEdit, setTable }) {
 
     async function handleDelete(e) {
         e.preventDefault();
+
+        // Confirmation pop-up to confirm delete request to userplant collection
         const userConfirmed = confirm("Are you sure you want to delete this plant from your garden?");
         if (userConfirmed) {
             try {
                 await axios.delete(`http://localhost:3000/api/userplant/${edit._id}`, options);
-                setTable((prev) => !prev);
-                setEdit({ type: "" });
+                setTable((prev) => !prev); // toggle for dependency array (useEffect) to refetch userplant data
+                setEdit({ type: "" }); // For ternary to display plant card or not on dashboard
 
             } catch (err) {
                 console.error(err.message);

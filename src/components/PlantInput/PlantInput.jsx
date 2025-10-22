@@ -20,12 +20,13 @@ export default function PlantInput({ setAddNew, setTable }) {
         lastFed: new Date(),
     });
 
+    // handler to add a new plant to userplant 
     async function handleSubmit(e) {
         e.preventDefault();
         try {
             await axios.post(`http://localhost:3000/api/userplant`, newPlant, options);
-            setAddNew((prev) => !prev);
-            setTable((prev) => !prev);
+            setAddNew((prev) => !prev); // for ternary to toggle displaying the plant input form
+            setTable((prev) => !prev); // to refresh table (refetch data from userplant collection)
 
         } catch (err) {
             console.error(err.message);
