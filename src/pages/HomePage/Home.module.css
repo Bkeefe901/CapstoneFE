@@ -1,13 +1,15 @@
 .header{
     height: 100px;
-    background-color: var(--oliveGreen);
+    background-color: var(--tableR);
     font-size: 80px;
+    border: 3px, solid, var(--darkForm);
 }
 
 .InfoContainer{
     display: flex;
     flex-direction: column;
     padding: 2em 7em;
+    font-size: large;
 }
 
 p{
@@ -15,6 +17,50 @@ p{
 }
 
 
-img{
+.heroImg{
     width: 92%;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.6);
+}
+
+a{
+    color: var(--table);
+    font-size: large;
+}
+
+a:hover{
+    color: var(--darkForm);
+}
+
+h3{
+    color: black;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 5px;
+    margin: 0;
+}
+
+li{
+    margin: 3px;
+}
+
+
+.footer{
+    margin: auto;
+    background-color: var(--white);
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footerColumn{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
 }

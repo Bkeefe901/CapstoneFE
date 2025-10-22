@@ -53,7 +53,7 @@ export default function PlantInput({ setAddNew, setTable }) {
             >
                 X
             </button>
-            <form onSubmit={handleSubmit}>
+            <form className={style.inputForm} onSubmit={handleSubmit}>
                 <label>
                     Name of Plant
                     <input

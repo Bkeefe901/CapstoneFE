@@ -1,8 +1,8 @@
-.mainContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -14,4 +14,31 @@
   background-color: var(--form);
   color: var(--text1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+
+}
+
+
+.searchForm > label{
+  font-size: larger;
+}
+
+.input {
+  border: none;
+  padding: 10px 15px;
+  height: 30px;
+  width: 100%;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  border-radius: 24px;
+
+}
+
+.submit {
+  border: none;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  padding: 10px 15px;
+  height: 30px;
+  font-size: 16px;
+  text-align: center;
+
 }

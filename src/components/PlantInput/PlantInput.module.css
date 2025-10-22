@@ -1,4 +1,4 @@
-.plantInput{
+.plantInput {
     background-color: var(--form);
     padding: 30px;
     position: fixed;
@@ -6,4 +6,28 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
+    border: 2px solid var(--white);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+
+.inputForm > input, label> input {
+    border: none;
+    padding: 10px 15px;
+    height: 30px;
+    width: 100%;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    border-radius: 24px;
+}
+
+
+.inputForm > select{
+    border: none;
+    height: 30px;
+}
+
+
+.inputForm > input:hover{
+    background-color: olive;
 }

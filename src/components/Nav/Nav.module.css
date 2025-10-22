@@ -10,6 +10,10 @@ a{
 
 
 nav > a > h3{
-    color: var(--tan);
+    color: var(--form);
     
+}
+
+nav > a > h3:hover{
+    color: var(--darkForm)
 }

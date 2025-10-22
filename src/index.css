@@ -15,13 +15,14 @@
 
 
 :root {
-  --gold: #d4b582;
-  --blue: #010160;
-  --oliveGreen: #606c38;
-  --armyGreen: #283618;
+  /* --gold: #d4b582; */
+  /* --blue: #010160; */
+  /* --tableR: #606c38; */
+  --background: #283618;
   --white: #fefae0;
-  --tan: #dda15e;
-  --darkTan: #bc6c25;
+  /* --form: #dda15e; */
+  --darkForm: #bc6c25;
+  --darkForm: #bc6c25;
   --form: #dda15e;
   --text1: #010160;
   --table: #13220c;
@@ -36,7 +37,7 @@ body{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: var(--armyGreen);
+  background-color: var(--background);
   color: var(--white);
 }
 

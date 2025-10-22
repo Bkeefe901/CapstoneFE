@@ -59,7 +59,7 @@ export default function PlantInfo({ plants, setNewList }) {
                 <p>{ob.description}</p>
                 <p><b>Sun light Requirements:</b> {ob.sunlightReqs}</p>
                 <p><b>Days to Harvest:</b> {ob.daysToHarvest}</p>
-                <img style={{ width: '40%' }} src={ob.imageURL || null} alt={ob.name} />
+                <img className={style.plantImg} src={ob.imageURL || null} alt={ob.name} />
                 {user ? <button
                     style={{ width: '100px', marginLeft: 'auto', boxShadow: '0 4px 4px rgba(0, 0, 0, 0.2)' }}
                     onClick={() => handleClick(ob)}

@@ -50,7 +50,7 @@ export default function PlantTable({ plantData, setAddNew, addNew, setTable, edi
 
     return (
         <div className={style.mainContainer}>
-            <h1 style={{marginTop: '30px', marginBottom: '0'}}>Welcome to Your Dashboard {user.userName}</h1>
+            <h1 style={{marginTop: '30px', marginBottom: '0'}}>Welcome to Your Dashboard {user.userName.toUpperCase()}</h1>
             <div className={style.secondContainer}>
                 <table className={style.table}>
                     <thead>

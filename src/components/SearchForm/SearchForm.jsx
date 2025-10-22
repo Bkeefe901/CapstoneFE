@@ -38,6 +38,7 @@ export default function SearchForm({ plants, setPlants, setNewList }) {
                             type="text" 
                             name="name"
                             value={search.name}
+                            className={style.input}
                             placeholder='Ex: tomato' 
                             onChange={handleChange}
                             
@@ -46,12 +47,13 @@ export default function SearchForm({ plants, setPlants, setNewList }) {
                     <input 
                         type="submit" 
                         value="Search" 
+                        className={style.submit}
                         onSubmit={handleSubmit}
                         
                         />
                 </form>
             </div>
-            <button onClick={handleClick}>Clear Search Results</button>
+            <button className={style.submit} onClick={handleClick}>Clear Search Results</button>
         </div>
     )
 }

@@ -1,0 +1,26 @@
+.plantCard {
+    justify-content: center;
+    align-items: center;
+    background-color: var(--table);
+    margin-top: 15%;
+    padding: 10px;
+
+}
+
+.plantCard>button {
+    border: none;
+    height: 30px;
+}
+
+.plantCard>input {
+    border: none;
+    height: 30px;
+}
+
+.plantCard>input:hover{
+    background-color: blanchedalmond;
+}
+
+.plantCard>button:hover{
+    background-color: blanchedalmond;
+}

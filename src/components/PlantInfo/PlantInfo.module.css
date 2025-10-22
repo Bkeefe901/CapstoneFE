@@ -1,7 +1,7 @@
 .plantCard{
     display: flex;
     flex-direction: column;
-    background-color: var(--oliveGreen);
+    background-color: var(--tableR);
     margin: 3px;
     width: 50%;
     padding: 8px;
@@ -14,4 +14,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+
+.plantImg{
+    width: 40%;
+    border: 2px solid var(--table);
+
+    
 }
