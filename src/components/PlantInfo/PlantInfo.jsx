@@ -14,12 +14,16 @@ export default function PlantInfo({ plants, setNewList }) {
 
     // handler to add plant from search page to personal garden
     async function handleClick(ob) {
+        
         const plantToAdd = {
             user: user._id,
             plantId: ob._id,
             name: ob.name,
+            feedingFrequency: ob.feedingFrequency,
             season: "spring",
         }
+
+        
 
         try {
             await axios.post(`http://localhost:3000/api/userplant`, plantToAdd, options);

@@ -87,6 +87,7 @@ Now you can navigate around the web app. Go to the login/signUp page and registe
 - ✅Figure out how to set default for PlantInput date to date.now when submitting form, if they werent changed
 
 
+- Need to add feedingFrequency input for PlantInput component
 - Want to fix the plant search so that if any plant items have names that are close or have that string within the name it will return them in the search list
 - Look into mobile alerts for watering/feeding of userplants (Twilio)
 - See if i need to deploy website

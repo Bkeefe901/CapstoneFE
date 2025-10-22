@@ -29,13 +29,47 @@ export default function PlantTable({ plantData, setAddNew, addNew, setTable, edi
             setEdit({ ...edit, type: "edit", ...plant });
         }
 
+        let colorCodeWater = '';
+        let colorCodeFed = '';
+
+
+        // conditonal statements to set style color for text of 'sinceWatered' and 'sinceFed' table data
+        if(sinceWater > 2 && sinceWater <= 4){ 
+            colorCodeWater = 'orange';
+        }
+        if(sinceWater > 4){
+            colorCodeWater = 'red';
+        }
+
+        let daysToFeed = plant.feedingFrequency - sinceFed; 
+
+        if(daysToFeed >= 2 && daysToFeed <= 4){
+            colorCodeFed = 'orange';
+        }
+        
+        if(daysToFeed < 2){
+            colorCodeFed = 'red';
+        }
+
+        
+
+        
+
         return (
             <>
                 <tr key={i}>
                     <td>{plant.name}</td>
                     <td>{age} days</td>
-                    <td>{sinceFed} days ago</td>
-                    <td>{sinceWater} days ago</td>
+                    <td
+                        style={{color: colorCodeFed}}
+                    >
+                        {sinceFed} days ago
+                    </td>
+                    <td
+                        style={{color: colorCodeWater}}
+                    >
+                        {sinceWater} days ago
+                        </td>
                     <td>
                         <button
                             onClick={handleClick}
