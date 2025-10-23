@@ -23,6 +23,7 @@ export default function LoginForm({ setNewUser }) {
             nav("/dash");
         } catch (err) {
             console.error(err.message);
+            alert(`❌ Invalid Information`);
         }
     };
 
