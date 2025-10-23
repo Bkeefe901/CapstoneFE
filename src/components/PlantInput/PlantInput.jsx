@@ -25,7 +25,7 @@ export default function PlantInput({ setAddNew, setTable }) {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            await axios.post(`http://localhost:3000/api/userplant`, newPlant, options);
+            await axios.post(`https://garden-tracker-0rj8.onrender.com/api/userplant`, newPlant, options);
             setAddNew((prev) => !prev); // for ternary to toggle displaying the plant input form
             setTable((prev) => !prev); // to refresh table (refetch data from userplant collection)
 

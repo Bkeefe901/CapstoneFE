@@ -26,7 +26,7 @@ export default function PlantInfo({ plants, setNewList }) {
         
 
         try {
-            await axios.post(`http://localhost:3000/api/userplant`, plantToAdd, options);
+            await axios.post(`https://garden-tracker-0rj8.onrender.com/api/userplant`, plantToAdd, options);
             alert(`✅ Plant has been added to your personal garden!`);
         } catch (err) {
             console.error(err.message);
@@ -42,7 +42,7 @@ export default function PlantInfo({ plants, setNewList }) {
         if (userConfirmed) {
             try {
                 console.log(options);
-                await axios.delete(`http://localhost:3000/api/plant/${ob._id}`, config);
+                await axios.delete(`https://garden-tracker-0rj8.onrender.com/api/plant/${ob._id}`, config);
                 alert(`✅ Plant has been deleted from database!`);
                 setNewList((prev) => !prev); // refreshes plant list
 
