@@ -16,7 +16,7 @@ export default function PlantInput({ setAddNew, setTable }) {
         name: "",
         season: "winter",
         datePlanted: new Date(),
-        feedingFrequency: "",
+        feedingFrequency: 14,
         lastWatered: new Date(),
         lastFed: new Date(),
     });

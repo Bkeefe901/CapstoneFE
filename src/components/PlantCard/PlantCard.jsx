@@ -10,6 +10,7 @@ export default function PlantCard({ edit, setEdit, setTable }) {
     let options = { headers: { "x-auth-token": token } };
     const watered = new Date(edit.lastWatered).toISOString().split("T")[0];
     const fed = new Date(edit.lastFed).toISOString().split("T")[0];
+    const planted = new Date(edit.datePlanted).toISOString().split("T")[0];
 
 
 
@@ -52,6 +53,7 @@ export default function PlantCard({ edit, setEdit, setTable }) {
             let updatedPlant = {
                 lastWatered: edit.lastWatered,
                 lastFed: edit.lastFed,
+                datePlanted: edit.datePlanted,
             }
             await axios.put(`http://localhost:3000/api/userplant/${edit._id}`, updatedPlant, options);
             setTable((prev) => !prev);
@@ -83,12 +85,22 @@ export default function PlantCard({ edit, setEdit, setTable }) {
                 >
                     Delete Plant</button>
                 <label>
+                    Date Planted
+                    <input 
+                        type="date" 
+                        name='datePlanted'
+                        value={planted}
+                        onChange={handleChange}
+                    />
+                </label>
+                <label>
                     Last Watered
                     <input
                         type="date"
                         name='lastWatered'
                         value={watered}
-                        onChange={handleChange} />
+                        onChange={handleChange} 
+                    />
                 </label>
                 <button onClick={handleClick} className={style.plantCardBtn} name='lastWatered' >Watered Today</button>
                 <label>
@@ -97,10 +109,11 @@ export default function PlantCard({ edit, setEdit, setTable }) {
                         type="date"
                         name="lastFed"
                         value={fed}
-                        onChange={handleChange} />
+                        onChange={handleChange} 
+                    />
                 </label>
                 <button onClick={handleClick} className={style.plantCardBtn} name='lastFed'>Fertalized Today</button>
-                <input type="submit" value="Save" style={{lineHeight: '10px'}} onSubmit={handleSubmit} />
+                <input type="submit" value="Save" style={{ lineHeight: '10px' }} onSubmit={handleSubmit} />
 
             </form>
         </>

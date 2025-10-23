@@ -24,7 +24,7 @@ export default function PlantTable({ plantData, setAddNew, addNew, setTable, edi
         let feedingDiff = now - fed;
         let sinceFed = Math.round(feedingDiff / (1000 * 60 * 60 * 24)); // same for fed
 
-        // handler to display the PlantCard (edit form)
+        // handler to display the PlantCard (edit form) and carry information about the plant
         function handleClick() {
             setEdit({ ...edit, type: "edit", ...plant });
         }
