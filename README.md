@@ -21,7 +21,7 @@ The Homepage is a simple front to the app which has several resources from acros
 
 The search page allows you access to the plant collection that gives you general information on different kinds of vegetable/fruit plants. It will tell you the recomended feeding frequency, sunlight requirements and a description of the plant. You can use the seach form to filter the list for specific plants. If you are an admin, this is where you can toggle between the basic search form and the admin form to add new plants to the plant collection in the database. You can also delete plants from the collection with a button that now appears on the list of plants.
 
-If you are a user you will have access to the dashboard page. The dashboard has a table that keeps track of your own garden. Here you can add plants manually to your garden, keep track of when you last watered or fed them, edit to updated waterings/feedings and remove dead plants. You can also now use the search page to quickly add plants from the plant collection to your garden plants.
+If you are a user you will have access to the dashboard page. The dashboard has a table that keeps track of your own garden. Here you can add plants manually to your garden, keep track of when you last watered or fed them, edit to updated waterings/feedings and remove dead plants. If you are coming up on the day you should feed your plant, based on feedingFrequency in the userplant schema the color of 'last fed' data for that plant will first turn yellow, then red when you should definitely feed your plant. You can also now use the search page to quickly add plants from the plant collection to your garden plants.
 
 
 ### Built With
@@ -85,11 +85,9 @@ Now you can navigate around the web app. Go to the login/signUp page and registe
 - ✅Might also need to create route to find plant by name, or... i could get all plants saved to state and when search by name in plant search compare by filtering names that have matching characters
 - ✅If I get to the point of matching plants to userPlants I should do it from the search page on the cards, ie there should be a button on each card that says 'add to garden';
 - ✅Figure out how to set default for PlantInput date to date.now when submitting form, if they werent changed
+- ✅Need to add feedingFrequency input for PlantInput component
+- ✅Create alert to handle if login info is wrong
+- ✅Should create feedingFrequency to userPlant that will be populated from plantId if there is one
 
-
-- Need to add feedingFrequency input for PlantInput component
 - Want to fix the plant search so that if any plant items have names that are close or have that string within the name it will return them in the search list
-- Look into mobile alerts for watering/feeding of userplants (Twilio)
-- See if i need to deploy website
-- Create alert to handle if login info is wrong
-- Should create feedingFrequency to userPlant that will be populated from plantId if there is one
+
