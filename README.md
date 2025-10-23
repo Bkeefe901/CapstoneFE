@@ -9,7 +9,7 @@
 # Garden Tracker App
 
 ## Links
-- [Jira](https://gardentracker.atlassian.net/browse/CGS-8?atlOrigin=eyJpIjoiNzMwYzc5ZDdhZjc4NDdkYjhlZjhmMjhhZThmNDY1MDUiLCJwIjoiaiJ9)
+- [Jira](https://gardentracker.atlassian.net/jira/software/projects/CGS/boards/34/timeline?selectedIssue=CGS-4)
 - [BackEnd Github](https://github.com/Bkeefe901/CapstoneBE)
 
 
