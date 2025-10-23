@@ -62,6 +62,7 @@ export default function PlantInfo({ plants, setNewList }) {
                 <h1>{ob.name.toUpperCase()}</h1>
                 <p>{ob.description}</p>
                 <p><b>Sun light Requirements:</b> {ob.sunlightReqs}</p>
+                <p><b>Feed every:</b> {ob.feedingFrequency} days</p>
                 <p><b>Days to Harvest:</b> {ob.daysToHarvest}</p>
                 <img className={style.plantImg} src={ob.imageURL || null} alt={ob.name} />
                 {user ? <button

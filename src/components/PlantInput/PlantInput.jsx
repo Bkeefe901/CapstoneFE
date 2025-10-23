@@ -11,14 +11,15 @@ export default function PlantInput({ setAddNew, setTable }) {
     const { cookies } = useAuth();
     let token = cookies.token;
     let options = { headers: { "x-auth-token": token } };
+    let today = new Date().toISOString().split("T")[0];
     const [newPlant, setNewPlant] = useState({
         user: user._id,
         name: "",
         season: "winter",
-        datePlanted: new Date(),
+        datePlanted: today,
         feedingFrequency: 14,
-        lastWatered: new Date(),
-        lastFed: new Date(),
+        lastWatered: today,
+        lastFed: today,
     });
 
     // handler to add a new plant to userplant 
