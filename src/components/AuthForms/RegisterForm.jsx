@@ -68,7 +68,6 @@ export default function RegisterForm({ setNewUser }) {
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Name:
           <input
             type="text"
             name="userName"
@@ -78,7 +77,6 @@ export default function RegisterForm({ setNewUser }) {
           />{" "}
         </label>
         <label>
-          Email:
           <input
             type="email"
             name="email"
@@ -88,7 +86,6 @@ export default function RegisterForm({ setNewUser }) {
           />
         </label>
         <label>
-          Password:
           <input
             type="password"
             name="password"

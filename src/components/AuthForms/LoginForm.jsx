@@ -36,7 +36,6 @@ export default function LoginForm({ setNewUser }) {
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Email: 
                     <input 
                         type="email"
                         name="email"
@@ -46,7 +45,6 @@ export default function LoginForm({ setNewUser }) {
                         />
                 </label>
                 <label>
-                    Password:
                     <input 
                         type="password" 
                         name="password"
