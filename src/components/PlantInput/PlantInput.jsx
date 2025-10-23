@@ -107,7 +107,7 @@ export default function PlantInput({ setAddNew, setTable }) {
                     <option value="summer">Summer</option>
                     <option value="fall">Fall</option>
                 </select>
-                <input type="submit" value="Add to Garden" />
+                <input type="submit" value="Add to Garden" style={{lineHeight: '10px'}} />
             </form>
         </div>
     )

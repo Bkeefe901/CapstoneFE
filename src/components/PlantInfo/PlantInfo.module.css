@@ -9,8 +9,8 @@
     border-radius: 5px;
 }
 
-.plantCard > h3 {
-    font-size: x-large;
+.plantCard >h1 {
+    font-size: xx-large;
 }
 
 .plantCard >button {

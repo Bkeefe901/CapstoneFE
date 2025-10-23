@@ -121,7 +121,7 @@ export default function AdminForm({ setNewList, plants, setPlants }) {
                 </label>
                 <input
                     type="submit"
-                    style={{ width: '130px' }}
+                    style={{ width: '130px', lineHeight: '10px' }}
                 />
             </form>  }
         </div> 

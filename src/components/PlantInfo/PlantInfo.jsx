@@ -59,7 +59,7 @@ export default function PlantInfo({ plants, setNewList }) {
     let plantInfo = plants.map((ob, i) => {
         return (
             <div key={i} className={style.plantCard}>
-                <h3>{ob.name}</h3>
+                <h1>{ob.name.toUpperCase()}</h1>
                 <p>{ob.description}</p>
                 <p><b>Sun light Requirements:</b> {ob.sunlightReqs}</p>
                 <p><b>Days to Harvest:</b> {ob.daysToHarvest}</p>

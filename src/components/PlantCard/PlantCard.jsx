@@ -100,7 +100,7 @@ export default function PlantCard({ edit, setEdit, setTable }) {
                         onChange={handleChange} />
                 </label>
                 <button onClick={handleClick} className={style.plantCardBtn} name='lastFed'>Fertalized Today</button>
-                <input type="submit" value="Save" onSubmit={handleSubmit} />
+                <input type="submit" value="Save" style={{lineHeight: '10px'}} onSubmit={handleSubmit} />
 
             </form>
         </>

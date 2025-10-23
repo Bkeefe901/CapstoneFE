@@ -56,7 +56,7 @@ export default function LoginForm({ setNewUser }) {
                         minLength="6"
                         />
                 </label>
-                <input type="submit" value="Log In" />
+                <input type="submit" value="Log In" style={{lineHeight: '10px'}} />
             </form>
             <p>
                 Don't have an account? <button onClick={handleClick}>Sign Up</button>

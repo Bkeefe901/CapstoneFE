@@ -107,7 +107,7 @@ export default function RegisterForm({ setNewUser }) {
           placeholder="Confirm Password"
           minLength="6"
         />
-        <input type="submit" value="Sign Up" />
+        <input type="submit" value="Sign Up" style={{lineHeight: '10px'}} />
       </form>
       <p>
         Already have an account? <button onClick={handleClick}>Sign In</button>
