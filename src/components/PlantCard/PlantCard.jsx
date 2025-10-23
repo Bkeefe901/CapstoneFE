@@ -70,7 +70,8 @@ export default function PlantCard({ edit, setEdit, setTable }) {
                 <button
                     type='button'
                     onClick={handleClose}
-                    style={{ marginRight: '90%' }}
+                    className={style.x}
+
                 >
                     X
                 </button>
@@ -78,6 +79,7 @@ export default function PlantCard({ edit, setEdit, setTable }) {
                 <button
                     style={{ marginBottom: '18px', backgroundColor: 'red' }}
                     onClick={handleDelete}
+                    className={style.plantCardBtn}
                 >
                     Delete Plant</button>
                 <label>
@@ -88,7 +90,7 @@ export default function PlantCard({ edit, setEdit, setTable }) {
                         value={watered}
                         onChange={handleChange} />
                 </label>
-                <button onClick={handleClick} name='lastWatered' >Watered Today</button>
+                <button onClick={handleClick} className={style.plantCardBtn} name='lastWatered' >Watered Today</button>
                 <label>
                     Last Fertalized
                     <input
@@ -97,7 +99,7 @@ export default function PlantCard({ edit, setEdit, setTable }) {
                         value={fed}
                         onChange={handleChange} />
                 </label>
-                <button onClick={handleClick} name='lastFed'>Fertalized Today</button>
+                <button onClick={handleClick} className={style.plantCardBtn} name='lastFed'>Fertalized Today</button>
                 <input type="submit" value="Save" onSubmit={handleSubmit} />
 
             </form>

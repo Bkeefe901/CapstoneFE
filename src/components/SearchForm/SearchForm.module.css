@@ -12,7 +12,7 @@
   padding: 2em;
   border-radius: 10px;
   background-color: var(--form);
-  color: var(--text1);
+  color: var(--background);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 
 }
@@ -21,6 +21,9 @@
 .searchForm > label{
   font-size: larger;
 }
+
+
+
 
 .input {
   border: none;
@@ -41,4 +44,10 @@
   font-size: 16px;
   text-align: center;
 
+}
+
+
+.clearBtn {
+  width: 170px;
+  font-size: medium;
 }

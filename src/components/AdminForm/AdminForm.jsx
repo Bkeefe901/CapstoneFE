@@ -52,8 +52,8 @@ export default function AdminForm({ setNewList, plants, setPlants }) {
 
         <div className={style.adminDiv}>
             <button 
-                style={{marginBottom: '10px'}}
                 onClick={handleClick}
+                className={style.toggle}
             >
             Admin Form Toggle
             </button>
@@ -79,17 +79,6 @@ export default function AdminForm({ setNewList, plants, setPlants }) {
                         onChange={handleChange}
                     />
                 </label>
-                <label>Sunlight Requirments</label>
-                <select
-                    name="sunlightReqs"
-                    value={newPlant.sunlightReqs}
-                    onChange={handleChange}
-                    style={{ width: '130px' }}
-                >
-                    <option value="">Full</option>
-                    <option value="">Partial</option>
-                    <option value="">Shade</option>
-                </select>
                 <label>
                     Days to Harvest
                     <input
@@ -108,10 +97,20 @@ export default function AdminForm({ setNewList, plants, setPlants }) {
                         onChange={handleChange}
                     />
                 </label>
+                <label>Sunlight Requirments</label>
+                <select
+                    name="sunlightReqs"
+                    value={newPlant.sunlightReqs}
+                    onChange={handleChange}
+                    className={style.select}
+                >
+                    <option value="">Full</option>
+                    <option value="">Partial</option>
+                    <option value="">Shade</option>
+                </select>
                 <label>
                     Description
                     <textarea
-                        style={{ height: '65px' }}
                         type="text"
                         name='description'
                         rows='8'

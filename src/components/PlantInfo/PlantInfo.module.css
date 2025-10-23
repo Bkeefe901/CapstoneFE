@@ -9,6 +9,19 @@
     border-radius: 5px;
 }
 
+.plantCard > h3 {
+    font-size: x-large;
+}
+
+.plantCard >button {
+    width: 100px;
+    margin-left: auto;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    font-size: x-small;
+    font-weight: 800;
+}
+
+
 .plantList{
     display: flex;
     flex-direction: column;

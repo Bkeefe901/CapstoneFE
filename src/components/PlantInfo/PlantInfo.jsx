@@ -72,7 +72,7 @@ export default function PlantInfo({ plants, setNewList }) {
                 </button> : <p></p>}
                 {user?.isAdmin ?
                     <button
-                        style={{ width: '100px', marginTop: '15px', marginLeft: 'auto', boxShadow: '0 4px 4px rgba(0, 0, 0, 0.2)', backgroundColor: 'red' }}
+                        style={{ marginTop: '15px', backgroundColor: 'red' }}
                         onClick={() => handleDelete(ob)}
                     >
                         Delete

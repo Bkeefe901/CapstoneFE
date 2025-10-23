@@ -3,17 +3,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 
 .secondContainer{
     display: flex;
     width: 100%;
     justify-content: center;
+    
 }
 
 .table{
     /* margin: 25% auto; */
-    margin-top: 15%;
+    margin-top: 5%;
     margin-bottom: 12px;
     width: 70%;
     background-color: var(--tableR);
@@ -32,3 +34,27 @@ th{
 tr:nth-child(even) {
     background-color: var(--tableR); 
 }
+
+.editBtn {
+    height: 25px;
+    width: 60px;
+    font-size: medium;
+    border-radius: 6px;
+    box-shadow: none;
+    background-color: var(--white);
+}
+
+.editBtn:hover {
+    background-color: var(--darkForm);
+}
+
+
+.addNew {
+    font-size: medium;
+    background-color: var(--white);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* .addNew:hover {
+    background-color: var(--tableR2);
+} */

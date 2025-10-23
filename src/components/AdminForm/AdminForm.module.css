@@ -6,7 +6,10 @@
     padding: 3em;
 }
 
-
+.toggle {
+    margin-bottom: 10px;
+    font-size: medium;
+}
 
 
 form {
@@ -17,14 +20,29 @@ form {
 }
 
 
-.adminForm{
+.adminForm {
     width: 370px;
     padding: 2em;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--text1);
+    color: var(--background);
     background-color: var(--form);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.adminForm >label {
+    font-size: large;
+}
+
+.adminForm >textarea{
+    height: 65px;
+}
+
+.select {
+    width: 130px;
+    border: none;
+    height: 25px;
+    border-radius: 4px;
 }

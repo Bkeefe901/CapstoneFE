@@ -73,6 +73,7 @@ export default function RegisterForm({ setNewUser }) {
         <input
           type="password"
           name="password2"
+          className={style.password2}
           value={formData.password2}
           onChange={handleChange}
           placeholder="Confirm Password"

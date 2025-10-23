@@ -31,9 +31,6 @@ a:hover{
     color: var(--darkForm);
 }
 
-h3{
-    color: black;
-}
 
 ul{
     list-style: none;
@@ -58,9 +55,6 @@ li{
     justify-content: space-around;
 }
 
-.footerColumn{
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
+.footerColumn > h3, li > a{
+    color: var(--tableR);
 }

@@ -53,7 +53,7 @@ export default function SearchForm({ plants, setPlants, setNewList }) {
                         />
                 </form>
             </div>
-            <button className={style.submit} onClick={handleClick}>Clear Search Results</button>
+            <button className={style.clearBtn} onClick={handleClick}>Clear Search Results</button>
         </div>
     )
 }

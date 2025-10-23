@@ -73,6 +73,7 @@ export default function PlantTable({ plantData, setAddNew, addNew, setTable, edi
                     <td>
                         <button
                             onClick={handleClick}
+                            className={style.editBtn}
                         >Edit</button>
                     </td>
                 </tr>
@@ -84,7 +85,7 @@ export default function PlantTable({ plantData, setAddNew, addNew, setTable, edi
 
     return (
         <div className={style.mainContainer}>
-            <h1 style={{marginTop: '30px', marginBottom: '0'}}>Welcome to Your Dashboard {user.userName.toUpperCase()}</h1>
+            <h1 style={{marginTop: '80px', marginBottom: '0'}}>Welcome to Your Dashboard {user.userName.toUpperCase()}</h1>
             <div className={style.secondContainer}>
                 <table className={style.table}>
                     <thead>
@@ -102,7 +103,7 @@ export default function PlantTable({ plantData, setAddNew, addNew, setTable, edi
                 </table>
                 {edit.type == 'edit' ? <PlantCard edit={edit} setEdit={setEdit} setTable={setTable} /> : <p></p>}
             </div>
-            {addNew ? <PlantInput setAddNew={setAddNew} setTable={setTable} /> : <button onClick={() => { setAddNew((prev) => !prev) }}>Add New Plant</button>}
+            {addNew ? <PlantInput setAddNew={setAddNew} setTable={setTable} /> : <button onClick={() => { setAddNew((prev) => !prev) }} className={style.addNew}>Add New Plant</button>}
         </div>
     )
 }

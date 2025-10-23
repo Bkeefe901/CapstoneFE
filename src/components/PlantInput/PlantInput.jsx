@@ -16,6 +16,7 @@ export default function PlantInput({ setAddNew, setTable }) {
         name: "",
         season: "winter",
         datePlanted: new Date(),
+        feedingFrequency: "",
         lastWatered: new Date(),
         lastFed: new Date(),
     });
@@ -69,6 +70,15 @@ export default function PlantInput({ setAddNew, setTable }) {
                         type="date"
                         name='datePlanted'
                         value={newPlant.datePlanted}
+                        onChange={handleChange}
+                    />
+                </label>
+                <label>
+                    Recomended Feeding Frequency (14 days default)
+                    <input
+                        type="number"
+                        name='feedingFrequency'
+                        value={newPlant.feedingFrequency}
                         onChange={handleChange}
                     />
                 </label>
