@@ -27,7 +27,7 @@ export default function PlantCard({ edit, setEdit, setTable }) {
         const userConfirmed = confirm("Are you sure you want to delete this plant from your garden?");
         if (userConfirmed) {
             try {
-                await axios.delete(`http://localhost:3000/api/userplant/${edit._id}`, options);
+                await axios.delete(`https://garden-tracker-0rj8.onrender.com/userplant/${edit._id}`, options);
                 setTable((prev) => !prev); // toggle for dependency array (useEffect) to refetch userplant data
                 setEdit({ type: "" }); // For ternary to display plant card or not on dashboard
 
@@ -55,7 +55,7 @@ export default function PlantCard({ edit, setEdit, setTable }) {
                 lastFed: edit.lastFed,
                 datePlanted: edit.datePlanted,
             }
-            await axios.put(`http://localhost:3000/api/userplant/${edit._id}`, updatedPlant, options);
+            await axios.put(`https://garden-tracker-0rj8.onrender.com/userplant/${edit._id}`, updatedPlant, options);
             setTable((prev) => !prev);
             setEdit({ type: "" });
 

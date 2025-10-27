@@ -30,7 +30,7 @@ export default function AdminForm({ setNewList, plants, setPlants }) {
         e.preventDefault();
         try {
             console.log(options);
-            await axios.post(`http://localhost:3000/api/plant`, newPlant, options);
+            await axios.post(`https://garden-tracker-0rj8.onrender.com/plant`, newPlant, options);
             alert(`✅ Plant successfully added to the database!`);
             setNewList((prev) => !prev); // refetches plant data to display after adding new plant (on SearchPage useEffect dependency)
 

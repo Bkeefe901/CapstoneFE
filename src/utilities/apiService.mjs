@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let baseURL = "http://localhost:3000/api";
+let baseURL = "https://garden-tracker-0rj8.onrender.com";
 
 async function getUser(token) {
     
