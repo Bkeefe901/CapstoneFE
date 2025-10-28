@@ -10,7 +10,7 @@ import SearchForm from '../../components/SearchForm/SearchForm';
 
 
 export default function SearchPage() {
-    const connStr = `https://garden-tracker-0rj8.onrender.com`;
+    const connStr = `https://garden-tracker-0rj8.onrender.com/api`;
     const [plants, setPlants] = useState(null);
     const [newList, setNewList] = useState(false);
     const { user } = useUser();

@@ -15,7 +15,7 @@ export default function Dashboard() {
     const [edit, setEdit] = useState({ type: "", id: "", name: "" });
     const { user } = useUser();
     const { cookies } = useAuth();
-    const connStr = `https://garden-tracker-0rj8.onrender.com`;
+    const connStr = `https://garden-tracker-0rj8.onrender.com/api`;
 
 
     // hook to auto populate the dashboard table with the userplant data

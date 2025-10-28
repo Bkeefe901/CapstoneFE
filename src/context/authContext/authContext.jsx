@@ -9,7 +9,7 @@ const AuthContext = createContext();
 export default function AuthProvider({children}) {
     const [cookies, setCookies, removeCookie] = useCookies();
 
-    const connStr = "https://garden-tracker-0rj8.onrender.com";
+    const connStr = "https://garden-tracker-0rj8.onrender.com/api";
 
     async function signUp(formData) {
         let res = await axios.post(`${connStr}/user`, formData);
