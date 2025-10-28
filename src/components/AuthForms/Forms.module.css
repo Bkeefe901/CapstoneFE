@@ -1,6 +1,7 @@
 .forms {
   max-width: 400px;
   margin: 2rem auto;
+  margin-top: 10%;
   padding: 2rem;
   border-radius: 10px;
   background-color: var(--form);
