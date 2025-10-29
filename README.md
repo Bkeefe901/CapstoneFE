@@ -78,16 +78,3 @@ Now you can navigate around the web app. Go to the login/signUp page and registe
 
 
 
-
-### Notes
-
-- ✅ Should probably change the plant schema feedingFrequency to type: Number and specify that it is in days in fe
-- ✅Might also need to create route to find plant by name, or... i could get all plants saved to state and when search by name in plant search compare by filtering names that have matching characters
-- ✅If I get to the point of matching plants to userPlants I should do it from the search page on the cards, ie there should be a button on each card that says 'add to garden';
-- ✅Figure out how to set default for PlantInput date to date.now when submitting form, if they werent changed
-- ✅Need to add feedingFrequency input for PlantInput component
-- ✅Create alert to handle if login info is wrong
-- ✅Should create feedingFrequency to userPlant that will be populated from plantId if there is one
-
-- Want to fix the plant search so that if any plant items have names that are close or have that string within the name it will return them in the search list
-
