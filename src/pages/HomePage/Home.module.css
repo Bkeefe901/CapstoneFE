@@ -49,12 +49,20 @@ li{
 
 .footer{
     margin: auto;
-    background-color: var(--white);
+    background-image: linear-gradient(to bottom, var(--background), var(--white));
+    /* background-color: var(--white); */
     width: 100%;
     display: flex;
     justify-content: space-around;
 }
 
+.footerColumn{
+    background-image: linear-gradient(to bottom, var(--background), var(--white) );
+}
+
+
+
 .footerColumn > h3, li > a{
     color: var(--tableR);
+    
 }

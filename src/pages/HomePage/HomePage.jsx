@@ -20,7 +20,7 @@ export default function HomePage() {
             </div>
             <footer className={style.footer}>
                     <div className={style.footerColumn}>
-                        <h3>Helpful Resources</h3>
+                        <h3 style={{color: 'var(--white)'}}>Helpful Resources</h3>
                         <ul>
                             <li><a href="https://www.epicgardening.com/" target='_blank'>Epic Gardening</a></li>
                             <li><a href="https://goingtoseed.org/" target='_blank'>Going to Seed</a></li>
@@ -31,7 +31,7 @@ export default function HomePage() {
                         </ul>
                     </div>
                     <div className={style.footerColumn}>
-                        <h3>Contact</h3>
+                        <h3 style={{color: 'var(--white)'}}>Contact</h3>
                         <ul>
                             <li><a href="https://mail.google.com/mail/?view=cm&to=bradyjokeefe@gmail.com" target='_blank'>Email</a></li>
                             <li><a href="https://www.linkedin.com/in/brady-keefe901/" target='_blank'>LinkedIn</a></li>
