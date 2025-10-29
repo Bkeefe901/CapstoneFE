@@ -13,3 +13,4 @@ jobs:
       - name: Ping Render App
         run: |
           curl -s https://gardentracker.onrender.com > /dev/null 2>&1
+          curl -s https://garden-tracker-0rj8.onrender.com/api/plant > /dev/null 2>&1
