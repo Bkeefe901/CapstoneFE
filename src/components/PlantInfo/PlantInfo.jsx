@@ -14,7 +14,7 @@ export default function PlantInfo({ plants, setNewList }) {
 
     // handler to add plant from search page to personal garden
     async function handleClick(ob) {
-        
+
         const plantToAdd = {
             user: user._id,
             plantId: ob._id,
@@ -23,7 +23,7 @@ export default function PlantInfo({ plants, setNewList }) {
             season: "spring",
         }
 
-        
+
 
         try {
             await axios.post(`https://garden-tracker-0rj8.onrender.com/api/userplant`, plantToAdd, options);
@@ -36,7 +36,7 @@ export default function PlantInfo({ plants, setNewList }) {
 
     // handler for admin to delete plants from plant collection from search page
     async function handleDelete(ob) {
-        const config = {...options, data:{ id: user._id }};
+        const config = { ...options, data: { id: user._id } };
         const userConfirmed = confirm("Are you want to delete this plant from the database?");
 
         if (userConfirmed) {
@@ -59,25 +59,28 @@ export default function PlantInfo({ plants, setNewList }) {
     let plantInfo = plants.map((ob, i) => {
         return (
             <div key={i} className={style.plantCard}>
-                <h1>{ob.name.toUpperCase()}</h1>
-                <p>{ob.description}</p>
-                <p><b>Sun light Requirements:</b> {ob.sunlightReqs}</p>
-                <p><b>Feed every:</b> {ob.feedingFrequency} days</p>
-                <p><b>Days to Harvest:</b> {ob.daysToHarvest}</p>
                 <img className={style.plantImg} src={ob.imageURL || null} alt={ob.name} />
-                {user ? <button
-                    style={{ width: '100px', marginLeft: 'auto', boxShadow: '0 4px 4px rgba(0, 0, 0, 0.2)' }}
-                    onClick={() => handleClick(ob)}
-                >
-                    Add to My Garden
-                </button> : <p></p>}
-                {user?.isAdmin ?
-                    <button
-                        style={{ marginTop: '15px', backgroundColor: 'red' }}
-                        onClick={() => handleDelete(ob)}
+                <div className={style.infoArea}>
+                    <h1>{ob.name.toUpperCase()}</h1>
+                    <p>{ob.description}</p>
+                    <p><b>Sun light Requirements:</b> {ob.sunlightReqs}</p>
+                    <p><b>Feed every:</b> {ob.feedingFrequency} days</p>
+                    <p><b>Days to Harvest:</b> {ob.daysToHarvest}</p>
+
+                    {user ? <button
+                        style={{ width: '100px', marginLeft: 'auto', boxShadow: '0 4px 4px rgba(0, 0, 0, 0.2)' }}
+                        onClick={() => handleClick(ob)}
                     >
-                        Delete
+                        Add to My Garden
                     </button> : <p></p>}
+                    {user?.isAdmin ?
+                        <button
+                            style={{ marginTop: '15px', backgroundColor: 'red' }}
+                            onClick={() => handleDelete(ob)}
+                        >
+                            Delete
+                        </button> : <p></p>}
+                </div>
             </div>
         )
     });

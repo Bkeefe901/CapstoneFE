@@ -100,7 +100,7 @@ export default function AdminForm({ setNewList, plants, setPlants }) {
                         />
                     </label>
                     <label>
-                        Image URL
+                        Image Path
                         <input
                             type="text"
                             name='imageURL'
