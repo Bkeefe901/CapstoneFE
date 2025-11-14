@@ -1,5 +1,4 @@
 .plantInput {
-    background-color: var(--form);
     padding: 30px;
     position: fixed;
     top: 50%;
@@ -7,11 +6,19 @@
     transform: translate(-50%, -50%);
     z-index: 1000;
     border: 2px solid var(--white);
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7),
+        inset 3px 3px 5px 3px rgb(246, 246, 247, 0.1);
+    background-color: rgb(123, 109, 109, 0.1);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+
+
 }
 
 
-.inputForm > input, label> input {
+.inputForm>input,
+label>input {
     border: none;
     padding: 10px 15px;
     height: 30px;
@@ -22,12 +29,12 @@
 }
 
 
-.inputForm > select{
+.inputForm>select {
     border: none;
     height: 30px;
 }
 
 
-.inputForm > input:hover{
+.inputForm>input:hover {
     background-color: olive;
 }
