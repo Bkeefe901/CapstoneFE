@@ -79,7 +79,7 @@ Now you can navigate around the web app. Go to the login/signUp page and registe
 
 
 ### Current Issues
-- Sometimes adding a plant from the PlantInput component will display age, last fert and last watered a day ago even though the date was for today.
-- Edit Row should have a clear escape button (save button works but not as intuitive)
-- Need to change styling of inputs on EditRow component
-- Need to explain the color coding of table data for watering and feeding
+- ☑️ Sometimes adding a plant from the PlantInput component will display age, last fert and last watered a day ago even though the date was for today.
+- ☑️ Edit Row should have a clear escape button (save button works but not as intuitive)
+- ☑️Need to change styling of inputs on EditRow component
+- ☑️Need to explain the color coding of table data for watering and feeding
