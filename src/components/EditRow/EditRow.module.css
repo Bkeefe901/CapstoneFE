@@ -15,3 +15,13 @@
     width: 40px;
     font-size: small;
 }
+
+input{
+    border: none;
+    padding: 5px 10px;
+    height: 25px;
+    width: 75%;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    border-radius: 20px;
+}

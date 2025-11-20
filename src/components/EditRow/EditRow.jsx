@@ -84,36 +84,40 @@ export default function EditRow({ edit, setEdit, setTable }) {
                 />
             </td>
             <td>
-                <input
-                    type="date"
-                    name='lastFed'
-                    value={fed}
-                    onChange={handleChange}
-                />
-                <button
-                    type='button'
-                    name='lastFed'
-                    onClick={handleClick}
-                    className={style.todayBtn}
-                >
-                    today
-                </button>
+                <div style={{ width: '100%' }}>
+                    <input
+                        type="date"
+                        name='lastFed'
+                        value={fed}
+                        onChange={handleChange}
+                    />
+                    <button
+                        type='button'
+                        name='lastFed'
+                        onClick={handleClick}
+                        className={style.todayBtn}
+                    >
+                        today
+                    </button>
+                </div>
             </td>
             <td>
-                <input
-                    type="date"
-                    name='lastWatered'
-                    value={watered}
-                    onChange={handleChange}
-                />
-                <button
-                    type='button'
-                    name='lastWatered'
-                    onClick={handleClick}
-                    className={style.todayBtn}
-                >
-                    today
-                </button>
+                <div style={{ width: '100%' }}>
+                    <input
+                        type="date"
+                        name='lastWatered'
+                        value={watered}
+                        onChange={handleChange}
+                    />
+                    <button
+                        type='button'
+                        name='lastWatered'
+                        onClick={handleClick}
+                        className={style.todayBtn}
+                    >
+                        today
+                    </button>
+                </div>
             </td>
             <td>
                 <button
