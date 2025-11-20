@@ -1,0 +1,17 @@
+.editBtn {
+    height: 25px;
+    width: 60px;
+    font-size: medium;
+    border-radius: 6px;
+    box-shadow: none;
+    background-color: var(--white);
+}
+
+.editBtn:hover {
+    background-color: rgba(164, 216, 170, 0.621);
+}
+
+.todayBtn{
+    width: 40px;
+    font-size: small;
+}

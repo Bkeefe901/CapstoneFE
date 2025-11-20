@@ -4,6 +4,7 @@ import { useUser } from '../../context/userContext/userContext';
 // Components
 import PlantInput from '../PlantInput/PlantInput';
 import PlantCard from '../PlantCard/PlantCard';
+import EditRow from '../EditRow/EditRow';
 
 
 
@@ -34,42 +35,44 @@ export default function PlantTable({ plantData, setAddNew, addNew, setTable, edi
 
 
         // conditonal statements to set style color for text of 'sinceWatered' and 'sinceFed' table data
-        if(sinceWater > 2 && sinceWater <= 4){ 
+        if (sinceWater > 2 && sinceWater <= 4) {
             colorCodeWater = 'orange';
         }
-        if(sinceWater > 4){
+        if (sinceWater > 4) {
             colorCodeWater = 'red';
         }
 
-        let daysToFeed = plant.feedingFrequency - sinceFed; 
+        let daysToFeed = plant.feedingFrequency - sinceFed;
 
-        if(daysToFeed >= 2 && daysToFeed <= 4){
+        if (daysToFeed >= 2 && daysToFeed <= 4) {
             colorCodeFed = 'orange';
         }
-        
-        if(daysToFeed < 2){
+
+        if (daysToFeed < 2) {
             colorCodeFed = 'red';
         }
 
-        
 
-        
 
-        return (
-            <>
+
+
+        return (edit.type == 'edit') && (edit._id == plant._id) ?
+            <EditRow edit={edit} setEdit={setEdit} setTable={setTable} />
+            : 
+            (
                 <tr key={i}>
                     <td>{plant.name}</td>
                     <td>{age} days</td>
                     <td
-                        style={{color: colorCodeFed}}
+                        style={{ color: colorCodeFed }}
                     >
                         {sinceFed} days ago
                     </td>
                     <td
-                        style={{color: colorCodeWater}}
+                        style={{ color: colorCodeWater }}
                     >
                         {sinceWater} days ago
-                        </td>
+                    </td>
                     <td>
                         <button
                             onClick={handleClick}
@@ -77,15 +80,15 @@ export default function PlantTable({ plantData, setAddNew, addNew, setTable, edi
                         >Edit</button>
                     </td>
                 </tr>
-            </>
-        );
+
+            );
     });
 
 
 
     return (
         <div className={style.mainContainer}>
-            <h1 style={{marginTop: '80px', marginBottom: '0'}}>Welcome to Your Dashboard {user.userName.toUpperCase()}</h1>
+            <h1 style={{ marginTop: '80px', marginBottom: '0' }}>Welcome to Your Dashboard {user.userName.toUpperCase()}</h1>
             <div className={style.secondContainer}>
                 <table className={style.table}>
                     <thead>
@@ -101,7 +104,6 @@ export default function PlantTable({ plantData, setAddNew, addNew, setTable, edi
                         {tableData}
                     </tbody>
                 </table>
-                {edit.type == 'edit' ? <PlantCard edit={edit} setEdit={setEdit} setTable={setTable} /> : <p></p>}
             </div>
             {addNew ? <PlantInput setAddNew={setAddNew} setTable={setTable} /> : <button onClick={() => { setAddNew((prev) => !prev) }} className={style.addNew}>Add New Plant</button>}
         </div>

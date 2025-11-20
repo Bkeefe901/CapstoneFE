@@ -8,12 +8,17 @@
     border: 2px solid var(--white);
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7),
         inset 3px 3px 5px 3px rgb(246, 246, 247, 0.1);
-    background-color: rgb(123, 109, 109, 0.1);
+    background-color: rgb(123, 109, 109, 0.3);
     backdrop-filter: blur(3px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
+    
 
 
+}
+
+label{
+    font-size: large;
 }
 
 
