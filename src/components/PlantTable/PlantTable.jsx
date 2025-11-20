@@ -3,7 +3,6 @@ import { useUser } from '../../context/userContext/userContext';
 
 // Components
 import PlantInput from '../PlantInput/PlantInput';
-import PlantCard from '../PlantCard/PlantCard';
 import EditRow from '../EditRow/EditRow';
 
 
