@@ -16,13 +16,13 @@ export default function PlantTable({ plantData, setAddNew, addNew, setTable, edi
         let now = new Date();
         let planted = new Date(plant.datePlanted);
         let ageDiff = now - planted;    // Finds diff between dates (datePlanted and now)
-        let age = Math.round(ageDiff / (1000 * 60 * 60 * 24));  // rounds and converts to days
+        let age = Math.floor(ageDiff / (1000 * 60 * 60 * 24));  // rounds and converts to days
         let watered = new Date(plant.lastWatered);
         let waterDifference = now - watered;
-        let sinceWater = Math.round(waterDifference / (1000 * 60 * 60 * 24)); // same for watered
+        let sinceWater = Math.floor(waterDifference / (1000 * 60 * 60 * 24)); // same for watered
         let fed = new Date(plant.lastFed);
         let feedingDiff = now - fed;
-        let sinceFed = Math.round(feedingDiff / (1000 * 60 * 60 * 24)); // same for fed
+        let sinceFed = Math.floor(feedingDiff / (1000 * 60 * 60 * 24)); // same for fed
 
         // handler to display the PlantCard (edit form) and carry information about the plant
         function handleClick() {
