@@ -68,14 +68,14 @@ export default function PlantInfo({ plants, setNewList }) {
                     <p><b>Days to Harvest:</b> {ob.daysToHarvest}</p>
 
                     {user ? <button
-                        style={{ width: '100px', marginLeft: 'auto', boxShadow: '0 4px 4px rgba(0, 0, 0, 0.2)' }}
+                        style={{ width: '150px', marginLeft: 'auto', boxShadow: '0 4px 4px rgba(0, 0, 0, 0.2)', fontSize: 'medium' }}
                         onClick={() => handleClick(ob)}
                     >
                         Add to My Garden
                     </button> : <p></p>}
                     {user?.isAdmin ?
                         <button
-                            style={{ marginTop: '15px', backgroundColor: 'red' }}
+                            style={{ width: '150px', marginTop: '15px', backgroundColor: 'red', fontSize: 'medium' }}
                             onClick={() => handleDelete(ob)}
                         >
                             Delete
